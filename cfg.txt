@@ -1,15 +1,19 @@
-CODE -> VDECL CODE
-CODE -> FDECL CODE
+CODE -> TYPE CODE  
 CODE -> ''
+CODE' -> VDECL
+CODE' -> FDECL
 
-VDECL -> vtype id semi
-VDECL -> vtype ASSIGN semi
+TYPE -> vtype CODE'
 
-ASSIGN -> id assign RHS
+VDECL -> id VDECL'
+VDECL' -> semi 
+VDECL' -> ASSIGN semi
 
-RHS -> EXPR
-RHS -> literal
-RHS -> character
+ASSIGN -> assign RHS
+
+RHS -> EXPR 
+RHS -> literal 
+RHS -> character 
 RHS -> boolstr
 
 EXPR -> TERM EXPR'
@@ -21,30 +25,30 @@ TERM' -> multdiv FACTOR TERM'
 TERM' -> ''
 
 FACTOR -> lparen EXPR rparen
-FACTOR -> id
 FACTOR -> num
+FACTOR -> id
 
-FDECL -> vtype id lparen ARG rparen lbrace BLOCK RETURN rbrace
+FDECL -> id lparen ARG rparen lbrace BLOCK RETURN rbrace
 
-ARG -> vtype id MOREARGS
+ARG -> vtype id MOREARGS 
 ARG -> ''
 
-MOREARGS -> comma vtype id MOREARGS
+MOREARGS -> comma vtype id MOREARGS 
 MOREARGS -> ''
 
-BLOCK -> STMT BLOCK
+BLOCK -> STMT BLOCK 
 BLOCK -> ''
 
-STMT -> VDECL
+STMT -> VDECL 
 STMT -> ASSIGN semi
 STMT -> if lparen COND rparen lbrace BLOCK rbrace ELSE
 STMT -> while lparen COND rparen lbrace BLOCK rbrace
 
 COND -> boolstr COND'
-COND' -> comp COND
+COND' -> comp COND 
 COND' -> ''
 
-ELSE -> else lbrace BLOCK rbrace
+ELSE -> else lbrace BLOCK rbrace 
 ELSE -> ''
 
 RETURN -> return RHS semi

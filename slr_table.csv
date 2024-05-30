@@ -1,143 +1,141 @@
 ﻿Goto;Kernel;State;Closure
-;{CODE -> .VDECL CODE};0;"{CODE -> .VDECL CODE; VDECL -> .vtype id semi; VDECL -> .vtype ASSIGN semi}"
-goto(0, VDECL);{CODE -> VDECL.CODE};1;"{CODE -> VDECL.CODE; CODE -> .VDECL CODE; CODE -> .FDECL CODE; CODE -> .; VDECL -> .vtype id semi; VDECL -> .vtype ASSIGN semi; FDECL -> .vtype id lparen ARG rparen lbrace BLOCK RETURN rbrace}"
-goto(0, vtype);"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi}";2;"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi; ASSIGN -> .id assign RHS}"
-goto(1, CODE);{CODE -> VDECL CODE.};3;{CODE -> VDECL CODE.}
-goto(1, VDECL);{CODE -> VDECL.CODE};1;
-goto(1, FDECL);{CODE -> FDECL.CODE};4;"{CODE -> FDECL.CODE; CODE -> .VDECL CODE; CODE -> .FDECL CODE; CODE -> .; VDECL -> .vtype id semi; VDECL -> .vtype ASSIGN semi; FDECL -> .vtype id lparen ARG rparen lbrace BLOCK RETURN rbrace}"
-goto(1, vtype);"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi; FDECL -> vtype.id lparen ARG rparen lbrace BLOCK RETURN rbrace}";5;"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi; FDECL -> vtype.id lparen ARG rparen lbrace BLOCK RETURN rbrace; ASSIGN -> .id assign RHS}"
-goto(2, id);"{VDECL -> vtype id.semi; ASSIGN -> id.assign RHS}";6;"{VDECL -> vtype id.semi; ASSIGN -> id.assign RHS}"
-goto(2, ASSIGN);{VDECL -> vtype ASSIGN.semi};7;{VDECL -> vtype ASSIGN.semi}
-goto(4, CODE);{CODE -> FDECL CODE.};8;{CODE -> FDECL CODE.}
-goto(4, VDECL);{CODE -> VDECL.CODE};1;
-goto(4, FDECL);{CODE -> FDECL.CODE};4;
-goto(4, vtype);"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi; FDECL -> vtype.id lparen ARG rparen lbrace BLOCK RETURN rbrace}";5;
-goto(5, id);"{VDECL -> vtype id.semi; FDECL -> vtype id.lparen ARG rparen lbrace BLOCK RETURN rbrace; ASSIGN -> id.assign RHS}";9;"{VDECL -> vtype id.semi; FDECL -> vtype id.lparen ARG rparen lbrace BLOCK RETURN rbrace; ASSIGN -> id.assign RHS}"
-goto(5, ASSIGN);{VDECL -> vtype ASSIGN.semi};7;
-goto(6, semi);{VDECL -> vtype id semi.};10;{VDECL -> vtype id semi.}
-goto(6, assign);{ASSIGN -> id assign.RHS};11;"{ASSIGN -> id assign.RHS; RHS -> .EXPR; RHS -> .literal; RHS -> .character; RHS -> .boolstr; EXPR -> .TERM EXPR'; TERM -> .FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .id; FACTOR -> .num}"
-goto(7, semi);{VDECL -> vtype ASSIGN semi.};12;{VDECL -> vtype ASSIGN semi.}
-goto(9, semi);{VDECL -> vtype id semi.};10;
-goto(9, lparen);{FDECL -> vtype id lparen.ARG rparen lbrace BLOCK RETURN rbrace};13;"{FDECL -> vtype id lparen.ARG rparen lbrace BLOCK RETURN rbrace; ARG -> .vtype id MOREARGS; ARG -> .}"
-goto(9, assign);{ASSIGN -> id assign.RHS};11;
-goto(11, RHS);{ASSIGN -> id assign RHS.};14;{ASSIGN -> id assign RHS.}
-goto(11, EXPR);{RHS -> EXPR.};15;{RHS -> EXPR.}
-goto(11, literal);{RHS -> literal.};16;{RHS -> literal.}
-goto(11, character);{RHS -> character.};17;{RHS -> character.}
-goto(11, boolstr);{RHS -> boolstr.};18;{RHS -> boolstr.}
-goto(11, TERM);{EXPR -> TERM.EXPR'};19;"{EXPR -> TERM.EXPR'; EXPR' -> .addsub TERM EXPR'; EXPR' -> .}"
-goto(11, FACTOR);{TERM -> FACTOR.TERM'};20;"{TERM -> FACTOR.TERM'; TERM' -> .multdiv FACTOR TERM'; TERM' -> .}"
-goto(11, lparen);{FACTOR -> lparen.EXPR rparen};21;"{FACTOR -> lparen.EXPR rparen; EXPR -> .TERM EXPR'; TERM -> .FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .id; FACTOR -> .num}"
-goto(11, id);{FACTOR -> id.};22;{FACTOR -> id.}
-goto(11, num);{FACTOR -> num.};23;{FACTOR -> num.}
-goto(13, ARG);{FDECL -> vtype id lparen ARG.rparen lbrace BLOCK RETURN rbrace};24;{FDECL -> vtype id lparen ARG.rparen lbrace BLOCK RETURN rbrace}
-goto(13, vtype);{ARG -> vtype.id MOREARGS};25;{ARG -> vtype.id MOREARGS}
-goto(19, EXPR');{EXPR -> TERM EXPR'.};26;{EXPR -> TERM EXPR'.}
-goto(19, addsub);{EXPR' -> addsub.TERM EXPR'};27;"{EXPR' -> addsub.TERM EXPR'; TERM -> .FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .id; FACTOR -> .num}"
-goto(20, TERM');{TERM -> FACTOR TERM'.};28;{TERM -> FACTOR TERM'.}
-goto(20, multdiv);{TERM' -> multdiv.FACTOR TERM'};29;"{TERM' -> multdiv.FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .id; FACTOR -> .num}"
-goto(21, EXPR);{FACTOR -> lparen EXPR.rparen};30;{FACTOR -> lparen EXPR.rparen}
-goto(21, TERM);{EXPR -> TERM.EXPR'};19;
-goto(21, FACTOR);{TERM -> FACTOR.TERM'};20;
-goto(21, lparen);{FACTOR -> lparen.EXPR rparen};21;
-goto(21, id);{FACTOR -> id.};22;
-goto(21, num);{FACTOR -> num.};23;
-goto(24, rparen);{FDECL -> vtype id lparen ARG rparen.lbrace BLOCK RETURN rbrace};31;{FDECL -> vtype id lparen ARG rparen.lbrace BLOCK RETURN rbrace}
-goto(25, id);{ARG -> vtype id.MOREARGS};32;"{ARG -> vtype id.MOREARGS; MOREARGS -> .comma vtype id MOREARGS; MOREARGS -> .}"
-goto(27, TERM);{EXPR' -> addsub TERM.EXPR'};33;"{EXPR' -> addsub TERM.EXPR'; EXPR' -> .addsub TERM EXPR'; EXPR' -> .}"
-goto(27, FACTOR);{TERM -> FACTOR.TERM'};20;
-goto(27, lparen);{FACTOR -> lparen.EXPR rparen};21;
-goto(27, id);{FACTOR -> id.};22;
-goto(27, num);{FACTOR -> num.};23;
-goto(29, FACTOR);{TERM' -> multdiv FACTOR.TERM'};34;"{TERM' -> multdiv FACTOR.TERM'; TERM' -> .multdiv FACTOR TERM'; TERM' -> .}"
-goto(29, lparen);{FACTOR -> lparen.EXPR rparen};21;
-goto(29, id);{FACTOR -> id.};22;
-goto(29, num);{FACTOR -> num.};23;
-goto(30, rparen);{FACTOR -> lparen EXPR rparen.};35;{FACTOR -> lparen EXPR rparen.}
-goto(31, lbrace);{FDECL -> vtype id lparen ARG rparen lbrace.BLOCK RETURN rbrace};36;"{FDECL -> vtype id lparen ARG rparen lbrace.BLOCK RETURN rbrace; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .vtype id semi; VDECL -> .vtype ASSIGN semi; ASSIGN -> .id assign RHS}"
-goto(32, MOREARGS);{ARG -> vtype id MOREARGS.};37;{ARG -> vtype id MOREARGS.}
-goto(32, comma);{MOREARGS -> comma.vtype id MOREARGS};38;{MOREARGS -> comma.vtype id MOREARGS}
-goto(33, EXPR');{EXPR' -> addsub TERM EXPR'.};39;{EXPR' -> addsub TERM EXPR'.}
-goto(33, addsub);{EXPR' -> addsub.TERM EXPR'};27;
-goto(34, TERM');{TERM' -> multdiv FACTOR TERM'.};40;{TERM' -> multdiv FACTOR TERM'.}
-goto(34, multdiv);{TERM' -> multdiv.FACTOR TERM'};29;
-goto(36, BLOCK);{FDECL -> vtype id lparen ARG rparen lbrace BLOCK.RETURN rbrace};41;"{FDECL -> vtype id lparen ARG rparen lbrace BLOCK.RETURN rbrace; RETURN -> .return RHS semi}"
-goto(36, STMT);{BLOCK -> STMT.BLOCK};42;"{BLOCK -> STMT.BLOCK; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .vtype id semi; VDECL -> .vtype ASSIGN semi; ASSIGN -> .id assign RHS}"
-goto(36, VDECL);{STMT -> VDECL.};43;{STMT -> VDECL.}
-goto(36, ASSIGN);{STMT -> ASSIGN.semi};44;{STMT -> ASSIGN.semi}
-goto(36, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};45;{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE}
-goto(36, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};46;{STMT -> while.lparen COND rparen lbrace BLOCK rbrace}
-goto(36, vtype);"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi}";2;
-goto(36, id);{ASSIGN -> id.assign RHS};47;{ASSIGN -> id.assign RHS}
-goto(38, vtype);{MOREARGS -> comma vtype.id MOREARGS};48;{MOREARGS -> comma vtype.id MOREARGS}
-goto(41, RETURN);{FDECL -> vtype id lparen ARG rparen lbrace BLOCK RETURN.rbrace};49;{FDECL -> vtype id lparen ARG rparen lbrace BLOCK RETURN.rbrace}
-goto(41, return);{RETURN -> return.RHS semi};50;"{RETURN -> return.RHS semi; RHS -> .EXPR; RHS -> .literal; RHS -> .character; RHS -> .boolstr; EXPR -> .TERM EXPR'; TERM -> .FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .id; FACTOR -> .num}"
-goto(42, BLOCK);{BLOCK -> STMT BLOCK.};51;{BLOCK -> STMT BLOCK.}
-goto(42, STMT);{BLOCK -> STMT.BLOCK};42;
-goto(42, VDECL);{STMT -> VDECL.};43;
-goto(42, ASSIGN);{STMT -> ASSIGN.semi};44;
-goto(42, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};45;
-goto(42, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};46;
-goto(42, vtype);"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi}";2;
-goto(42, id);{ASSIGN -> id.assign RHS};47;
-goto(44, semi);{STMT -> ASSIGN semi.};52;{STMT -> ASSIGN semi.}
-goto(45, lparen);{STMT -> if lparen.COND rparen lbrace BLOCK rbrace ELSE};53;"{STMT -> if lparen.COND rparen lbrace BLOCK rbrace ELSE; COND -> .boolstr COND'}"
-goto(46, lparen);{STMT -> while lparen.COND rparen lbrace BLOCK rbrace};54;"{STMT -> while lparen.COND rparen lbrace BLOCK rbrace; COND -> .boolstr COND'}"
-goto(47, assign);{ASSIGN -> id assign.RHS};11;
-goto(48, id);{MOREARGS -> comma vtype id.MOREARGS};55;"{MOREARGS -> comma vtype id.MOREARGS; MOREARGS -> .comma vtype id MOREARGS; MOREARGS -> .}"
-goto(49, rbrace);{FDECL -> vtype id lparen ARG rparen lbrace BLOCK RETURN rbrace.};56;{FDECL -> vtype id lparen ARG rparen lbrace BLOCK RETURN rbrace.}
+;{CODE -> .TYPE CODE};0;"{CODE -> .TYPE CODE; TYPE -> .vtype CODE'}"
+goto(0, TYPE);{CODE -> TYPE.CODE};1;"{CODE -> TYPE.CODE; CODE -> .TYPE CODE; CODE -> .; TYPE -> .vtype CODE'}"
+goto(0, vtype);{TYPE -> vtype.CODE'};2;"{TYPE -> vtype.CODE'; CODE' -> .VDECL; CODE' -> .FDECL; VDECL -> .id VDECL'; FDECL -> .id lparen ARG rparen lbrace BLOCK RETURN rbrace}"
+goto(1, CODE);{CODE -> TYPE CODE.};3;{CODE -> TYPE CODE.}
+goto(1, TYPE);{CODE -> TYPE.CODE};1;
+goto(1, vtype);{TYPE -> vtype.CODE'};2;
+goto(2, CODE');{TYPE -> vtype CODE'.};4;{TYPE -> vtype CODE'.}
+goto(2, VDECL);{CODE' -> VDECL.};5;{CODE' -> VDECL.}
+goto(2, FDECL);{CODE' -> FDECL.};6;{CODE' -> FDECL.}
+goto(2, id);"{VDECL -> id.VDECL'; FDECL -> id.lparen ARG rparen lbrace BLOCK RETURN rbrace}";7;"{VDECL -> id.VDECL'; FDECL -> id.lparen ARG rparen lbrace BLOCK RETURN rbrace; VDECL' -> .semi; VDECL' -> .ASSIGN semi; ASSIGN -> .assign RHS}"
+goto(7, VDECL');{VDECL -> id VDECL'.};8;{VDECL -> id VDECL'.}
+goto(7, lparen);{FDECL -> id lparen.ARG rparen lbrace BLOCK RETURN rbrace};9;"{FDECL -> id lparen.ARG rparen lbrace BLOCK RETURN rbrace; ARG -> .vtype id MOREARGS; ARG -> .}"
+goto(7, semi);{VDECL' -> semi.};10;{VDECL' -> semi.}
+goto(7, ASSIGN);{VDECL' -> ASSIGN.semi};11;{VDECL' -> ASSIGN.semi}
+goto(7, assign);{ASSIGN -> assign.RHS};12;"{ASSIGN -> assign.RHS; RHS -> .EXPR; RHS -> .literal; RHS -> .character; RHS -> .boolstr; EXPR -> .TERM EXPR'; TERM -> .FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .num; FACTOR -> .id}"
+goto(9, ARG);{FDECL -> id lparen ARG.rparen lbrace BLOCK RETURN rbrace};13;{FDECL -> id lparen ARG.rparen lbrace BLOCK RETURN rbrace}
+goto(9, vtype);{ARG -> vtype.id MOREARGS};14;{ARG -> vtype.id MOREARGS}
+goto(11, semi);{VDECL' -> ASSIGN semi.};15;{VDECL' -> ASSIGN semi.}
+goto(12, RHS);{ASSIGN -> assign RHS.};16;{ASSIGN -> assign RHS.}
+goto(12, EXPR);{RHS -> EXPR.};17;{RHS -> EXPR.}
+goto(12, literal);{RHS -> literal.};18;{RHS -> literal.}
+goto(12, character);{RHS -> character.};19;{RHS -> character.}
+goto(12, boolstr);{RHS -> boolstr.};20;{RHS -> boolstr.}
+goto(12, TERM);{EXPR -> TERM.EXPR'};21;"{EXPR -> TERM.EXPR'; EXPR' -> .addsub TERM EXPR'; EXPR' -> .}"
+goto(12, FACTOR);{TERM -> FACTOR.TERM'};22;"{TERM -> FACTOR.TERM'; TERM' -> .multdiv FACTOR TERM'; TERM' -> .}"
+goto(12, lparen);{FACTOR -> lparen.EXPR rparen};23;"{FACTOR -> lparen.EXPR rparen; EXPR -> .TERM EXPR'; TERM -> .FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .num; FACTOR -> .id}"
+goto(12, num);{FACTOR -> num.};24;{FACTOR -> num.}
+goto(12, id);{FACTOR -> id.};25;{FACTOR -> id.}
+goto(13, rparen);{FDECL -> id lparen ARG rparen.lbrace BLOCK RETURN rbrace};26;{FDECL -> id lparen ARG rparen.lbrace BLOCK RETURN rbrace}
+goto(14, id);{ARG -> vtype id.MOREARGS};27;"{ARG -> vtype id.MOREARGS; MOREARGS -> .comma vtype id MOREARGS; MOREARGS -> .}"
+goto(21, EXPR');{EXPR -> TERM EXPR'.};28;{EXPR -> TERM EXPR'.}
+goto(21, addsub);{EXPR' -> addsub.TERM EXPR'};29;"{EXPR' -> addsub.TERM EXPR'; TERM -> .FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .num; FACTOR -> .id}"
+goto(22, TERM');{TERM -> FACTOR TERM'.};30;{TERM -> FACTOR TERM'.}
+goto(22, multdiv);{TERM' -> multdiv.FACTOR TERM'};31;"{TERM' -> multdiv.FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .num; FACTOR -> .id}"
+goto(23, EXPR);{FACTOR -> lparen EXPR.rparen};32;{FACTOR -> lparen EXPR.rparen}
+goto(23, TERM);{EXPR -> TERM.EXPR'};21;
+goto(23, FACTOR);{TERM -> FACTOR.TERM'};22;
+goto(23, lparen);{FACTOR -> lparen.EXPR rparen};23;
+goto(23, num);{FACTOR -> num.};24;
+goto(23, id);{FACTOR -> id.};25;
+goto(26, lbrace);{FDECL -> id lparen ARG rparen lbrace.BLOCK RETURN rbrace};33;"{FDECL -> id lparen ARG rparen lbrace.BLOCK RETURN rbrace; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .id VDECL'; ASSIGN -> .assign RHS}"
+goto(27, MOREARGS);{ARG -> vtype id MOREARGS.};34;{ARG -> vtype id MOREARGS.}
+goto(27, comma);{MOREARGS -> comma.vtype id MOREARGS};35;{MOREARGS -> comma.vtype id MOREARGS}
+goto(29, TERM);{EXPR' -> addsub TERM.EXPR'};36;"{EXPR' -> addsub TERM.EXPR'; EXPR' -> .addsub TERM EXPR'; EXPR' -> .}"
+goto(29, FACTOR);{TERM -> FACTOR.TERM'};22;
+goto(29, lparen);{FACTOR -> lparen.EXPR rparen};23;
+goto(29, num);{FACTOR -> num.};24;
+goto(29, id);{FACTOR -> id.};25;
+goto(31, FACTOR);{TERM' -> multdiv FACTOR.TERM'};37;"{TERM' -> multdiv FACTOR.TERM'; TERM' -> .multdiv FACTOR TERM'; TERM' -> .}"
+goto(31, lparen);{FACTOR -> lparen.EXPR rparen};23;
+goto(31, num);{FACTOR -> num.};24;
+goto(31, id);{FACTOR -> id.};25;
+goto(32, rparen);{FACTOR -> lparen EXPR rparen.};38;{FACTOR -> lparen EXPR rparen.}
+goto(33, BLOCK);{FDECL -> id lparen ARG rparen lbrace BLOCK.RETURN rbrace};39;"{FDECL -> id lparen ARG rparen lbrace BLOCK.RETURN rbrace; RETURN -> .return RHS semi}"
+goto(33, STMT);{BLOCK -> STMT.BLOCK};40;"{BLOCK -> STMT.BLOCK; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .id VDECL'; ASSIGN -> .assign RHS}"
+goto(33, VDECL);{STMT -> VDECL.};41;{STMT -> VDECL.}
+goto(33, ASSIGN);{STMT -> ASSIGN.semi};42;{STMT -> ASSIGN.semi}
+goto(33, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};43;{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE}
+goto(33, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};44;{STMT -> while.lparen COND rparen lbrace BLOCK rbrace}
+goto(33, id);{VDECL -> id.VDECL'};45;"{VDECL -> id.VDECL'; VDECL' -> .semi; VDECL' -> .ASSIGN semi; ASSIGN -> .assign RHS}"
+goto(33, assign);{ASSIGN -> assign.RHS};12;
+goto(35, vtype);{MOREARGS -> comma vtype.id MOREARGS};46;{MOREARGS -> comma vtype.id MOREARGS}
+goto(36, EXPR');{EXPR' -> addsub TERM EXPR'.};47;{EXPR' -> addsub TERM EXPR'.}
+goto(36, addsub);{EXPR' -> addsub.TERM EXPR'};29;
+goto(37, TERM');{TERM' -> multdiv FACTOR TERM'.};48;{TERM' -> multdiv FACTOR TERM'.}
+goto(37, multdiv);{TERM' -> multdiv.FACTOR TERM'};31;
+goto(39, RETURN);{FDECL -> id lparen ARG rparen lbrace BLOCK RETURN.rbrace};49;{FDECL -> id lparen ARG rparen lbrace BLOCK RETURN.rbrace}
+goto(39, return);{RETURN -> return.RHS semi};50;"{RETURN -> return.RHS semi; RHS -> .EXPR; RHS -> .literal; RHS -> .character; RHS -> .boolstr; EXPR -> .TERM EXPR'; TERM -> .FACTOR TERM'; FACTOR -> .lparen EXPR rparen; FACTOR -> .num; FACTOR -> .id}"
+goto(40, BLOCK);{BLOCK -> STMT BLOCK.};51;{BLOCK -> STMT BLOCK.}
+goto(40, STMT);{BLOCK -> STMT.BLOCK};40;
+goto(40, VDECL);{STMT -> VDECL.};41;
+goto(40, ASSIGN);{STMT -> ASSIGN.semi};42;
+goto(40, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};43;
+goto(40, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};44;
+goto(40, id);{VDECL -> id.VDECL'};45;
+goto(40, assign);{ASSIGN -> assign.RHS};12;
+goto(42, semi);{STMT -> ASSIGN semi.};52;{STMT -> ASSIGN semi.}
+goto(43, lparen);{STMT -> if lparen.COND rparen lbrace BLOCK rbrace ELSE};53;"{STMT -> if lparen.COND rparen lbrace BLOCK rbrace ELSE; COND -> .boolstr COND'}"
+goto(44, lparen);{STMT -> while lparen.COND rparen lbrace BLOCK rbrace};54;"{STMT -> while lparen.COND rparen lbrace BLOCK rbrace; COND -> .boolstr COND'}"
+goto(45, VDECL');{VDECL -> id VDECL'.};8;
+goto(45, semi);{VDECL' -> semi.};10;
+goto(45, ASSIGN);{VDECL' -> ASSIGN.semi};11;
+goto(45, assign);{ASSIGN -> assign.RHS};12;
+goto(46, id);{MOREARGS -> comma vtype id.MOREARGS};55;"{MOREARGS -> comma vtype id.MOREARGS; MOREARGS -> .comma vtype id MOREARGS; MOREARGS -> .}"
+goto(49, rbrace);{FDECL -> id lparen ARG rparen lbrace BLOCK RETURN rbrace.};56;{FDECL -> id lparen ARG rparen lbrace BLOCK RETURN rbrace.}
 goto(50, RHS);{RETURN -> return RHS.semi};57;{RETURN -> return RHS.semi}
-goto(50, EXPR);{RHS -> EXPR.};15;
-goto(50, literal);{RHS -> literal.};16;
-goto(50, character);{RHS -> character.};17;
-goto(50, boolstr);{RHS -> boolstr.};18;
-goto(50, TERM);{EXPR -> TERM.EXPR'};19;
-goto(50, FACTOR);{TERM -> FACTOR.TERM'};20;
-goto(50, lparen);{FACTOR -> lparen.EXPR rparen};21;
-goto(50, id);{FACTOR -> id.};22;
-goto(50, num);{FACTOR -> num.};23;
+goto(50, EXPR);{RHS -> EXPR.};17;
+goto(50, literal);{RHS -> literal.};18;
+goto(50, character);{RHS -> character.};19;
+goto(50, boolstr);{RHS -> boolstr.};20;
+goto(50, TERM);{EXPR -> TERM.EXPR'};21;
+goto(50, FACTOR);{TERM -> FACTOR.TERM'};22;
+goto(50, lparen);{FACTOR -> lparen.EXPR rparen};23;
+goto(50, num);{FACTOR -> num.};24;
+goto(50, id);{FACTOR -> id.};25;
 goto(53, COND);{STMT -> if lparen COND.rparen lbrace BLOCK rbrace ELSE};58;{STMT -> if lparen COND.rparen lbrace BLOCK rbrace ELSE}
 goto(53, boolstr);{COND -> boolstr.COND'};59;"{COND -> boolstr.COND'; COND' -> .comp COND; COND' -> .}"
 goto(54, COND);{STMT -> while lparen COND.rparen lbrace BLOCK rbrace};60;{STMT -> while lparen COND.rparen lbrace BLOCK rbrace}
 goto(54, boolstr);{COND -> boolstr.COND'};59;
 goto(55, MOREARGS);{MOREARGS -> comma vtype id MOREARGS.};61;{MOREARGS -> comma vtype id MOREARGS.}
-goto(55, comma);{MOREARGS -> comma.vtype id MOREARGS};38;
+goto(55, comma);{MOREARGS -> comma.vtype id MOREARGS};35;
 goto(57, semi);{RETURN -> return RHS semi.};62;{RETURN -> return RHS semi.}
 goto(58, rparen);{STMT -> if lparen COND rparen.lbrace BLOCK rbrace ELSE};63;{STMT -> if lparen COND rparen.lbrace BLOCK rbrace ELSE}
 goto(59, COND');{COND -> boolstr COND'.};64;{COND -> boolstr COND'.}
 goto(59, comp);{COND' -> comp.COND};65;"{COND' -> comp.COND; COND -> .boolstr COND'}"
 goto(60, rparen);{STMT -> while lparen COND rparen.lbrace BLOCK rbrace};66;{STMT -> while lparen COND rparen.lbrace BLOCK rbrace}
-goto(63, lbrace);{STMT -> if lparen COND rparen lbrace.BLOCK rbrace ELSE};67;"{STMT -> if lparen COND rparen lbrace.BLOCK rbrace ELSE; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .vtype id semi; VDECL -> .vtype ASSIGN semi; ASSIGN -> .id assign RHS}"
+goto(63, lbrace);{STMT -> if lparen COND rparen lbrace.BLOCK rbrace ELSE};67;"{STMT -> if lparen COND rparen lbrace.BLOCK rbrace ELSE; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .id VDECL'; ASSIGN -> .assign RHS}"
 goto(65, COND);{COND' -> comp COND.};68;{COND' -> comp COND.}
 goto(65, boolstr);{COND -> boolstr.COND'};59;
-goto(66, lbrace);{STMT -> while lparen COND rparen lbrace.BLOCK rbrace};69;"{STMT -> while lparen COND rparen lbrace.BLOCK rbrace; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .vtype id semi; VDECL -> .vtype ASSIGN semi; ASSIGN -> .id assign RHS}"
+goto(66, lbrace);{STMT -> while lparen COND rparen lbrace.BLOCK rbrace};69;"{STMT -> while lparen COND rparen lbrace.BLOCK rbrace; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .id VDECL'; ASSIGN -> .assign RHS}"
 goto(67, BLOCK);{STMT -> if lparen COND rparen lbrace BLOCK.rbrace ELSE};70;{STMT -> if lparen COND rparen lbrace BLOCK.rbrace ELSE}
-goto(67, STMT);{BLOCK -> STMT.BLOCK};42;
-goto(67, VDECL);{STMT -> VDECL.};43;
-goto(67, ASSIGN);{STMT -> ASSIGN.semi};44;
-goto(67, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};45;
-goto(67, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};46;
-goto(67, vtype);"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi}";2;
-goto(67, id);{ASSIGN -> id.assign RHS};47;
+goto(67, STMT);{BLOCK -> STMT.BLOCK};40;
+goto(67, VDECL);{STMT -> VDECL.};41;
+goto(67, ASSIGN);{STMT -> ASSIGN.semi};42;
+goto(67, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};43;
+goto(67, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};44;
+goto(67, id);{VDECL -> id.VDECL'};45;
+goto(67, assign);{ASSIGN -> assign.RHS};12;
 goto(69, BLOCK);{STMT -> while lparen COND rparen lbrace BLOCK.rbrace};71;{STMT -> while lparen COND rparen lbrace BLOCK.rbrace}
-goto(69, STMT);{BLOCK -> STMT.BLOCK};42;
-goto(69, VDECL);{STMT -> VDECL.};43;
-goto(69, ASSIGN);{STMT -> ASSIGN.semi};44;
-goto(69, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};45;
-goto(69, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};46;
-goto(69, vtype);"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi}";2;
-goto(69, id);{ASSIGN -> id.assign RHS};47;
+goto(69, STMT);{BLOCK -> STMT.BLOCK};40;
+goto(69, VDECL);{STMT -> VDECL.};41;
+goto(69, ASSIGN);{STMT -> ASSIGN.semi};42;
+goto(69, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};43;
+goto(69, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};44;
+goto(69, id);{VDECL -> id.VDECL'};45;
+goto(69, assign);{ASSIGN -> assign.RHS};12;
 goto(70, rbrace);{STMT -> if lparen COND rparen lbrace BLOCK rbrace.ELSE};72;"{STMT -> if lparen COND rparen lbrace BLOCK rbrace.ELSE; ELSE -> .else lbrace BLOCK rbrace; ELSE -> .}"
 goto(71, rbrace);{STMT -> while lparen COND rparen lbrace BLOCK rbrace.};73;{STMT -> while lparen COND rparen lbrace BLOCK rbrace.}
 goto(72, ELSE);{STMT -> if lparen COND rparen lbrace BLOCK rbrace ELSE.};74;{STMT -> if lparen COND rparen lbrace BLOCK rbrace ELSE.}
 goto(72, else);{ELSE -> else.lbrace BLOCK rbrace};75;{ELSE -> else.lbrace BLOCK rbrace}
-goto(75, lbrace);{ELSE -> else lbrace.BLOCK rbrace};76;"{ELSE -> else lbrace.BLOCK rbrace; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .vtype id semi; VDECL -> .vtype ASSIGN semi; ASSIGN -> .id assign RHS}"
+goto(75, lbrace);{ELSE -> else lbrace.BLOCK rbrace};76;"{ELSE -> else lbrace.BLOCK rbrace; BLOCK -> .STMT BLOCK; BLOCK -> .; STMT -> .VDECL; STMT -> .ASSIGN semi; STMT -> .if lparen COND rparen lbrace BLOCK rbrace ELSE; STMT -> .while lparen COND rparen lbrace BLOCK rbrace; VDECL -> .id VDECL'; ASSIGN -> .assign RHS}"
 goto(76, BLOCK);{ELSE -> else lbrace BLOCK.rbrace};77;{ELSE -> else lbrace BLOCK.rbrace}
-goto(76, STMT);{BLOCK -> STMT.BLOCK};42;
-goto(76, VDECL);{STMT -> VDECL.};43;
-goto(76, ASSIGN);{STMT -> ASSIGN.semi};44;
-goto(76, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};45;
-goto(76, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};46;
-goto(76, vtype);"{VDECL -> vtype.id semi; VDECL -> vtype.ASSIGN semi}";2;
-goto(76, id);{ASSIGN -> id.assign RHS};47;
+goto(76, STMT);{BLOCK -> STMT.BLOCK};40;
+goto(76, VDECL);{STMT -> VDECL.};41;
+goto(76, ASSIGN);{STMT -> ASSIGN.semi};42;
+goto(76, if);{STMT -> if.lparen COND rparen lbrace BLOCK rbrace ELSE};43;
+goto(76, while);{STMT -> while.lparen COND rparen lbrace BLOCK rbrace};44;
+goto(76, id);{VDECL -> id.VDECL'};45;
+goto(76, assign);{ASSIGN -> assign.RHS};12;
 goto(77, rbrace);{ELSE -> else lbrace BLOCK rbrace.};78;{ELSE -> else lbrace BLOCK rbrace.}
