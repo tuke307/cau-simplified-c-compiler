@@ -46,13 +46,12 @@ class Parser:
 
                 if action.startswith("s"):  # shift to a state
                     next_state = int(action[1:])
-                    self.stack.append(
-                        (next_state, token)
-                    )  # push the state and token to the stack
+                    # push the state and token to the stack
+                    self.stack.append((next_state, token))
                     parse_tree_stack.append(Node(token))
                     self.index += 1
 
-                elif action.startswith("r"):  # reduce by a grammar rule
+                elif action.startswith("r"):  # reduce
                     rule_index = int(action[1:])
                     lhs, rhs = self.grammar.rules[rule_index]
                     children = []
@@ -60,13 +59,14 @@ class Parser:
                     # pop the stack for the right-hand side of the rule
                     for _ in rhs:
                         self.stack.pop()
+                        # insert at the beginning to maintain order
                         children.insert(0, parse_tree_stack.pop())
 
                     # push the left-hand side of the rule to the stack
                     current_state = self.stack[-1][0]
                     next_state = int(self.slr_table.goto[current_state][lhs])
                     self.stack.append((next_state, lhs))
-                    parent_node = Node(lhs, children=children)
+                    parent_node = Node(lhs, children)
                     parse_tree_stack.append(parent_node)
 
                 elif action == "acc":  # accept the input
