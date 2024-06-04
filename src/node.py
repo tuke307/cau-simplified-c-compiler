@@ -1,11 +1,16 @@
-class Node:
+from anytree import NodeMixin, RenderTree
+
+
+class Node(NodeMixin):
     """
-    Node class for parse tree
+    Node class for parse tree, compatible with anytree
     """
 
-    def __init__(self, symbol, children=None):
+    def __init__(self, symbol, parent=None, children=None):
         self.symbol = symbol
-        self.children = children if children else []
+        self.parent = parent
+        if children:
+            self.children = children
 
     def __repr__(self):
-        return f"Node({self.symbol}, {self.children})"
+        return f"Node({self.symbol})"

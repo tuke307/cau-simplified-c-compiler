@@ -2,6 +2,7 @@ from typing import List, Tuple, Dict
 from grammar import Grammar
 from slr_table import SLRTable
 from node import Node
+from anytree import NodeMixin, RenderTree
 
 
 class Parser:
@@ -36,14 +37,14 @@ class Parser:
 
         print(f"Parsing tokens: {tokens}")
 
-        while True: # continue until we reach "acc" or encounter an error
+        while True:  # continue until we reach "acc" or encounter an error
             state = self.stack[-1][0]
             token = self.tokens[self.index]
 
             if token in self.slr_table.actions.get(state, {}):
                 action = self.slr_table.actions[state][token]
 
-                if action.startswith("s"):  # shift
+                if action.startswith("s"):  # shift to a state
                     next_state = int(action[1:])
                     self.stack.append(
                         (next_state, token)
@@ -51,7 +52,7 @@ class Parser:
                     parse_tree_stack.append(Node(token))
                     self.index += 1
 
-                elif action.startswith("r"):  # reduce
+                elif action.startswith("r"):  # reduce by a grammar rule
                     rule_index = int(action[1:])
                     lhs, rhs = self.grammar.rules[rule_index]
                     children = []
@@ -65,13 +66,24 @@ class Parser:
                     current_state = self.stack[-1][0]
                     next_state = int(self.slr_table.goto[current_state][lhs])
                     self.stack.append((next_state, lhs))
-                    parse_tree_stack.append(Node(lhs, children))
+                    parent_node = Node(lhs, children=children)
+                    parse_tree_stack.append(parent_node)
 
-                elif action == "acc":  # accept
+                elif action == "acc":  # accept the input
                     self.parse_tree = parse_tree_stack.pop()
                     print("Parsing successful!")
                     return self.parse_tree
             else:
                 print(f"Syntax error at token {token} at position {self.index + 1}")
                 return None
-        return None
+        return
+
+    def visualize_parse_tree(self):
+        """
+        Visualize the parse tree using anytree
+        """
+        if self.parse_tree:
+            for pre, fill, node in RenderTree(self.parse_tree):
+                print(f"{pre}{node.symbol}")
+        else:
+            print("No parse tree to visualize.")

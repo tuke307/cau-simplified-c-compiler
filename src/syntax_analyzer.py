@@ -29,7 +29,4 @@ if __name__ == "__main__":
 
     result = parser.parse(tokens)
     if result:
-        print("Parse Tree:")
-        print(result)
-    else:
-        print("Parsing failed.")
+        parser.visualize_parse_tree()
