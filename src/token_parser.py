@@ -2,6 +2,7 @@ from typing import List, Tuple, Dict
 from grammar import Grammar
 from slr_table import SLRTable
 from anytree import Node, RenderTree
+from config import DEBUG
 
 
 class Parser:
@@ -40,8 +41,14 @@ class Parser:
             state = self.stack[-1][0]
             token = self.tokens[self.index]
 
+            if DEBUG:
+                print(f"Current state: {state}, Current token: {token}")
+
             if token in self.slr_table.actions.get(state, {}):
                 action = self.slr_table.actions[state][token]
+
+                if DEBUG:
+                    print(f"Action: {action}")
 
                 if action.startswith("s"):  # shift to a state
                     next_state = int(action[1:])

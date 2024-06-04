@@ -1,4 +1,6 @@
 import csv
+import os
+from config import DEBUG
 
 
 class SLRTable:
@@ -22,34 +24,54 @@ class SLRTable:
         """
         Read Action Table from a CSV file
         """
-        print(f"Reading Action Table from {action_file}")
+        if DEBUG:
+            print(f"Reading Action Table from {action_file}")
 
-        with open(action_file, "r", encoding="utf-8-sig") as file:
-            reader = csv.DictReader(file, delimiter=";")
+        if not os.path.exists(action_file):
+            raise FileNotFoundError(f"The file {action_file} does not exist.")
 
-            headers = reader.fieldnames
-            print(f"CSV Headers: {headers}")  # Debug print to check headers
+        try:
+            with open(action_file, "r", encoding="utf-8-sig") as file:
+                reader = csv.DictReader(file, delimiter=";")
+                headers = reader.fieldnames
 
-            for row in reader:
-                state = int(row["State"])
-                self.actions[state] = {
-                    header: row[header] for header in headers if header != "State"
-                }
+                if DEBUG:
+                    print(f"CSV Headers: {headers}")
+
+                for row in reader:
+                    state = int(row["State"])
+                    self.actions[state] = {
+                        header: row[header] for header in headers if header != "State"
+                    }
+        except Exception as e:
+            raise ValueError(
+                f"An error occurred while reading the file {action_file}: {str(e)}"
+            )
 
     def _read_goto_table(self, goto_file: str):
         """
         Read Goto Table from a CSV file
         """
-        print(f"Reading Goto Table from {goto_file}")
+        if DEBUG:
+            print(f"Reading Goto Table from {goto_file}")
 
-        with open(goto_file, "r", encoding="utf-8-sig") as file:
-            reader = csv.DictReader(file, delimiter=";")
+        if not os.path.exists(goto_file):
+            raise FileNotFoundError(f"The file {goto_file} does not exist.")
 
-            headers = reader.fieldnames
-            print(f"CSV Headers: {headers}")  # Debug print to check headers
+        try:
+            with open(goto_file, "r", encoding="utf-8-sig") as file:
+                reader = csv.DictReader(file, delimiter=";")
+                headers = reader.fieldnames
 
-            for row in reader:
-                state = int(row["State"])
-                self.goto[state] = {
-                    header: row[header] for header in headers if header != "State"
-                }
+                if DEBUG:
+                    print(f"CSV Headers: {headers}")
+
+                for row in reader:
+                    state = int(row["State"])
+                    self.goto[state] = {
+                        header: row[header] for header in headers if header != "State"
+                    }
+        except Exception as e:
+            raise ValueError(
+                f"An error occurred while reading the file {goto_file}: {str(e)}"
+            )
