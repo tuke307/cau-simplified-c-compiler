@@ -1,8 +1,7 @@
 from typing import List, Tuple, Dict
 from grammar import Grammar
 from slr_table import SLRTable
-from node import Node
-from anytree import NodeMixin, RenderTree
+from anytree import Node, RenderTree
 
 
 class Parser:
@@ -66,11 +65,13 @@ class Parser:
                     current_state = self.stack[-1][0]
                     next_state = int(self.slr_table.goto[current_state][lhs])
                     self.stack.append((next_state, lhs))
-                    parent_node = Node(lhs, children)
+
+                    # create a new parent node and append it to the parse_tree_stack
+                    parent_node = Node(lhs, children=children)
                     parse_tree_stack.append(parent_node)
 
                 elif action == "acc":  # accept the input
-                    self.parse_tree = parse_tree_stack.pop()
+                    self.parse_tree = parse_tree_stack[0]  # use the first node as the root
                     print("Parsing successful!")
                     return self.parse_tree
             else:
@@ -84,6 +85,6 @@ class Parser:
         """
         if self.parse_tree:
             for pre, fill, node in RenderTree(self.parse_tree):
-                print(f"{pre}{node.symbol}")
+                print(f"{pre}{node.name}")
         else:
             print("No parse tree to visualize.")
