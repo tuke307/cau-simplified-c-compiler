@@ -50,6 +50,10 @@ class Parser:
                 if DEBUG:
                     print(f"Action: {action}")
 
+                if not action: # action is empty, when state+token is not in the action table
+                    print(f"Syntax error at token number {self.index + 1}: {token}")
+                    break
+
                 if action.startswith("s"):  # shift to a state
                     next_state = int(action[1:])
                     # push the state and token to the stack
@@ -81,10 +85,15 @@ class Parser:
                     self.parse_tree = parse_tree_stack[0]  # use the first node as the root
                     print("Parsing successful!")
                     return self.parse_tree
-            else:
-                print(f"Syntax error at token {token} at position {self.index + 1}")
-                return None
-        return
+            else: # no action found for token in the table
+                print(f"Syntax error at token number {self.index + 1}: {token}")
+                break
+
+        # Check if all tokens have been read but the accepting state has not been reached
+        if self.index == len(self.tokens) - 1 and action != "acc":
+            print(f"Error: All tokens have been read but the accepting state has not been reached.")
+
+        return None
 
     def visualize_parse_tree(self):
         """
