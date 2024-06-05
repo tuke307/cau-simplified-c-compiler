@@ -43,7 +43,7 @@ class Parser:
         self._initialize_parse(tokens)
         parse_tree_stack = []
 
-        print(f"Parsing tokens: {tokens}")
+        print(f"Parsing tokens: {tokens}\n{'-'*50}")
 
         while True:
             state = self._current_state()
@@ -71,7 +71,7 @@ class Parser:
             
             if DEBUG:
                 print(f"Stack: {self.stack}")
-                print(f"Parse tree stack: {parse_tree_stack}")
+                print(f"Parse tree stack: {parse_tree_stack}\n{'-'*50}")
 
         self._check_unfinished_parse(action)
         return None
@@ -165,6 +165,9 @@ class Parser:
         parent_node = Node(lhs, children=children)
         parse_tree_stack.append(parent_node)
 
+        if DEBUG:
+            print(f"Reduced by rule {lhs} -> {rhs}")
+
     def _accept(self, parse_tree_stack: List[Node]) -> Node:
         """
         Accept the input and return the parse tree.
@@ -175,7 +178,17 @@ class Parser:
         Returns:
         Node: The root of the parse tree.
         """
+        while len(parse_tree_stack) > 1:
+            parent_node = Node("CODE")
+
+            # delete two last nodes from stack
+            parent_node.children.insert(0, parse_tree_stack.pop())
+            parent_node.children.insert(0, parse_tree_stack.pop())
+
+            parse_tree_stack.append(parent_node)
+
         self.parse_tree = parse_tree_stack[0]
+
         print("Parsing successful!")
         return self.parse_tree
 
