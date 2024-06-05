@@ -1,22 +1,18 @@
 # simplified-c-compiler
 
-## Python
+## requirements
+* python 3.7
 
-### unix/mac
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pip install --upgrade pip
-```
+## usage
+syntax_analyzer <input_file>
 
-### windows
-```bash
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-pip install --upgrade pip
-```
+Input: 
+* A sequence of tokens (terminals) written in the input file (see the [example inputs](#example-input) section for more details)
+
+Output
+* accept: parse tree for the input sequence
+* reject: error report
+
 
 ## example input
 
