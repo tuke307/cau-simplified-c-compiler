@@ -28,7 +28,7 @@ def read_tokens(token_file):
             tokens = file.read().strip().split()
 
         if DEBUG:
-            print(f"Tokens: {tokens}")
+            print(f"Tokens: {tokens}\n{'-'*50}")
 
         return tokens
     except Exception as e:

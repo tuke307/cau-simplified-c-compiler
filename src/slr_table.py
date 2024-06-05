@@ -36,7 +36,7 @@ class SLRTable:
                 headers = reader.fieldnames
 
                 if DEBUG:
-                    print(f"CSV Headers: {headers}")
+                    print(f"CSV Headers: {headers}\n{'-'*50}")
 
                 for row in reader:
                     state = int(row["State"])
@@ -64,7 +64,7 @@ class SLRTable:
                 headers = reader.fieldnames
 
                 if DEBUG:
-                    print(f"CSV Headers: {headers}")
+                    print(f"CSV Headers: {headers}\n{'-'*50}")
 
                 for row in reader:
                     state = int(row["State"])

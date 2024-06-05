@@ -32,7 +32,7 @@ class Grammar:
                 self.non_terminals = set(file.read().strip().split(", "))
 
             if DEBUG:
-                print(f"Non-terminals: {self.non_terminals}")
+                print(f"Non-terminals: {self.non_terminals}\n{'-'*50}")
         except Exception as e:
             raise ValueError(
                 f"An error occurred while parsing the file {file_path}: {str(e)}"
@@ -53,7 +53,7 @@ class Grammar:
                 self.terminals = set(file.read().strip().split(", "))
 
             if DEBUG:
-                print(f"Terminals: {self.terminals}")
+                print(f"Terminals: {self.terminals}\n{'-'*50}")
         except Exception as e:
             raise ValueError(
                 f"An error occurred while parsing the file {file_path}: {str(e)}"
@@ -103,4 +103,4 @@ class Grammar:
         self.start_symbol = self.rules[0][0]
 
         if DEBUG:
-            print(f"Start symbol: {self.start_symbol}")
+            print(f"Start symbol: {self.start_symbol}\n{'-'*50}")
