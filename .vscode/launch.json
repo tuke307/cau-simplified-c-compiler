@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/src/syntax_analyzer.py",
             "console": "integratedTerminal",
-            "args": ["/Users/tonymeissner/source/simplified-c-compiler/example_input_tokens2.txt"]
+            "args": ["/Users/tonymeissner/source/simplified-c-compiler/input/task_example.txt"]
         },
     ]
 }
