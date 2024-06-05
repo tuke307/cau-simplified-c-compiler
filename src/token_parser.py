@@ -68,6 +68,10 @@ class Parser:
                 self._reduce(action, parse_tree_stack)
             elif action == "acc":
                 return self._accept(parse_tree_stack)
+            
+            if DEBUG:
+                print(f"Stack: {self.stack}")
+                print(f"Parse tree stack: {parse_tree_stack}")
 
         self._check_unfinished_parse(action)
         return None
