@@ -39,7 +39,7 @@ MOREARGS -> ''
 BLOCK -> STMT BLOCK 
 BLOCK -> ''
 
-STMT -> VDECL 
+STMT -> vtype VDECL 
 STMT -> ASSIGN semi
 STMT -> if lparen COND rparen lbrace BLOCK rbrace ELSE
 STMT -> while lparen COND rparen lbrace BLOCK rbrace
