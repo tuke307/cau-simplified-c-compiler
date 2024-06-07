@@ -2,7 +2,6 @@
     "recommendations": [
         "ms-python.python",
         "ms-python.black-formatter",
-        "Prisma.prisma",
         "eamodio.gitlens"
     ]
 }
