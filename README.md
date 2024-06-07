@@ -34,6 +34,24 @@ int main() {
 }
 ```
 
+### [function declaration args and statements](input/function_declaration_statement.txt)
+```c
+int func(int a, int b, int c) {
+    int x;
+    return 0;
+}
+```
+
+### [if statement](input/if_statement.txt)
+```c
+int main() {
+    if (true == true) {
+        x = 10;
+    }
+    return x;
+}
+```
+
 ### [if else statement](input/if_else_statement.txt)
 ```c
 int main() {
