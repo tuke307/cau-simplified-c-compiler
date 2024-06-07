@@ -4,7 +4,9 @@
 * python 3.7
 
 ## usage
-syntax_analyzer <input_file>
+```bash
+python src/syntax_analyzer.py <token_input_file>
+```
 
 Input: 
 * A sequence of tokens (terminals) written in the input file (see the [example inputs](#example-input) section for more details)
